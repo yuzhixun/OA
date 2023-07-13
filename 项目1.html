@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .logo{
+            height: 250px;
+            line-height: 250px;
+            background: url(./image/Snipaste_2023-07-13_18-10-22.png);
+            background-position: center;
+            background-repeat: no-repeat;
+       }
+       .name{
+        height: 100px;
+        font-size: 50px;
+        line-height: 100px;
+        text-align: center;
+        font-weight: 600;
+        letter-spacing: 3px;
+       }
+        .box{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 350px;
+            height: 280px;
+            border-top: 1px solid black;
+            border-left: 1px solid black;
+            border-bottom: 1px solid black;
+            border-right: 1px solid black;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            margin: 0 auto;
+        }
+        .box .box-1{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: start;
+            margin-bottom: 10px;
+        }
+        .box .box-1 > label{
+            color: black;
+            margin-bottom: 5px;
+            font-size: 13px;
+        }
+        .box > h2{
+            color: black;
+            margin-bottom: 20px;
+        }
+        .box .box-1 > input{
+            font-size: 14px;
+            height: 35px;
+            width: 250px;
+            background: white;
+            border: 1px solid black;
+        }
+        .picture{
+            height: 317px;
+            line-height: 317px;
+            background: url(./image/Snipaste_2023-07-13_18-26-38.png);
+        } 
+    </style>
+</head>
+<body>
+    <div class="logo"></div>
+    <div class="name">东莞市鼎诺五金制品有限公司</div>
+    <form class="box">
+        <h2>登录</h2>
+        <div class="box-1">
+            <label>账号</label>
+            <input type="text">
+        </div>
+        <div class="box-1">
+            <label>密码</label>
+            <input type="password">
+        </div>
+        <div class="box-2">
+            <a href="#">忘记密码？</a>
+        </div>
+        <div>
+             <button>登录</button>
+             <button>注册</button>
+        </div>
+    </form>
+    <div class="picture"></div>
+</body>
+</html>
