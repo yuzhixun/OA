@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .container{
+            width: 100%;
+            height: 900px;
+            background: linear-gradient(to bottom,rgb(33, 153, 228),yellow);
+        }
+        .logo{
+            width: 100%;
+            height: 120px;
+            line-height: 120px;
+            margin: 0 auto;
+            background: url(./image/Snipaste_2023-07-13_18-10-22\(1\)\(1\).png);
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        .word{
+            text-align: center;
+            color: blue;
+            font-size: 40px;
+            font-weight: 600;
+            font-style: italic;
+        }
+        .words{
+            text-align: center;
+            color: blue;
+            font-size: 80px;
+            font-weight: 800;
+            position: relative;
+            top: 50px;
+        }
+        .picture{
+            height: 200px;
+            position: relative;
+            top: 50px;
+        }
+        .picture .box1{
+            width: 150px;
+            height: 180px;
+            border: 1px solid black;
+            position: absolute;
+            top: 50px;
+            left: 20%;
+        }
+        .box1 .title1{
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            font-style: oblique;
+
+        }
+        .picture .box2{
+            width: 150px;
+            height: 180px;
+            border: 1px solid black;
+            position: absolute;
+            top: 50px;
+            left: 45%;
+        }
+        .box2 .title2{
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            font-style: oblique;
+        }
+        .box3 .title3{
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            font-style: oblique;
+        }
+        .picture .box3{
+            width: 150px;
+            height: 180px;
+            border: 1px solid black;
+            position: absolute;
+            top: 50px;
+            left: 70%;
+        }
+        .box1 .p1{
+            position: relative;
+            display: inline-block;
+        }
+         .box1 .p1 img{
+            transition: transform 0.3s ease;
+        }
+        .p1:hover img{
+            transform: scale(1.2);
+        }
+        .box2 .p2{
+            position: relative;
+            display: inline-block;
+        }
+         .box2 .p2 img{
+            transition: transform 0.3s ease;
+        }
+        .p2:hover img{
+            transform: scale(1.2);
+        }
+        .box3 .p3{
+            position: relative;
+            display: inline-block;
+        }
+         .box3 .p3 img{
+            transition: transform 0.3s ease;
+        }
+        .p3:hover img{
+            transform: scale(1.2);
+        }
+        .backpicture{
+            position: relative;
+            top: 90px;
+            left: 12%;
+        }
+        .last{
+            position: relative;
+            top: 100px;
+            text-align: center;
+            font-style: italic;
+            font-size: 60px;
+            color: brown;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo"></div>
+        <div class="word">DONG GUAN DING NUO</div>
+        <div class="words">致力于五金精密制造事业</div>
+        <div class="picture">
+          <div class="box1">
+            <div class="p1"><a href="#"><img src="./image/微信图片_20230714221733(1)(1).png" alt="#"></a></div>
+            <div class="title1"><a href="#">曾子豪个邵</a></div>
+          </div>
+          <div class="box2">
+            <div class="p2"><a href="#"><img src="./image/微信图片_20230714221742(1).png" alt=""></a></div>
+            <div class="title2"><a href="#">你个邵</a></div>
+          </div>
+          <div class="box3">
+            <div class="p3"><a href="#"><img src="./image/微信图片_20230714221746(1).png" alt=""></a></div>
+            <div class="title3"><a href="#">你邵</a></div>
+          </div>
+        </div>
+        <div class="backpicture"><img src="./image/微信图片_20230715182928.png" alt=""></div>
+        <div class="last">诚信立足，创兴致远！</div>
+    </div>
+</body>
+</html>
