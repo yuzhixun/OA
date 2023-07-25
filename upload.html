@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload Files and Form Data</title>
+    <style>
+      @font-face {
+        font-family: '造字工房瑜悦体（非商用）';
+        src: url(fonts/MFYuYue_Noncommercial-Regular.otf);
+      }
+        body {
+            font-family: '造字工房瑜悦体（非商用）';
+            background-color: #f1f1f1;
+        }
+
+        .box {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        p{
+          height: 300px;
+          line-height: 300px;
+          text-align: center;
+          font-size: 100px;
+          font-family: '造字工房瑜悦体（非商用）';
+        }
+    </style>
+</head>
+<body>
+  <!DOCTYPE html>
+  <html>
+  <head>
+      <title>Upload Files and Form Data</title>
+  </head>
+  <body>
+      <div class="box">
+          <form id="my-form" action="/upload" method="POST" enctype="multipart/form-data">
+              <input type="file" name="files" value="上传文件" id="fileInput" multiple>
+              <label>请输入客户名</label>
+              <input type="text" name="name">
+              <label>请选择类型</label>
+              <input id="type" type="text" list="typelist" placeholder="请选择" name="tag">
+              <datalist id="typelist">
+                  <option value="drawing">图纸</option>
+                  <option value="workbook">作业指导书</option>
+              </datalist>
+              <input type="text" name="mes" placeholder="输入备注">
+              <input type="submit" value="提交">
+          </form>
+      </div>
+      <p>好好学习&ensp;&ensp;&ensp;天天向钱</p>
+  <script>
+    let newFileName = null; // Variable to store the new file name
+  
+    // Function to extract the file name from the full path
+    const extractFileName = (fullPath) => {
+      const startIndex = fullPath.lastIndexOf("\\") + 1;
+      return fullPath.slice(startIndex);
+    };
+  
+    // Function to show a custom dialog box for modifying the file name
+    const showRenameDialog = () => {
+      const currentFileName = document.getElementById("fileInput").value;
+      const fileNameWithoutPath = extractFileName(currentFileName);
+      const userInput = prompt(
+        "提示：同名文件不可取，请修改文件名，并写好备注，防止混淆！",
+        fileNameWithoutPath
+      );
+      if (userInput !== null) {
+        newFileName = userInput; // Save the new file name in the variable
+  
+        // Create a hidden input field to store the new file name
+        const hiddenInput = document.createElement("input");
+        hiddenInput.type = "hidden";
+        hiddenInput.name = "newFileName";
+        hiddenInput.value = newFileName;
+        document.getElementById("my-form").appendChild(hiddenInput);
+  
+        // Resubmit the form
+        handleSubmit();
+      }
+    };
+  
+    // Function to handle form submission
+    const handleSubmit = async (event) => {
+      if (event) {
+        event.preventDefault(); // Prevent default form submission
+      }
+  
+      // Get form data
+      const form = document.getElementById("my-form");
+      const formData = new FormData(form);
+  
+      // Send form data to the server using fetch API
+      const response = await fetch("/upload", {
+        method: "POST",
+        body: formData,
+      });
+  
+      // Parse the JSON response from the server
+      const data = await response.json();
+  
+      // Check if the server returned an error
+      if (data.error) {
+        // Display the error message in an alert dialog
+        alert(data.error);
+  
+        // Show the custom dialog box for modifying the file name
+        showRenameDialog();
+      } else {
+        // If no error, do something (optional)
+        alert(data); // Display the success message in an alert dialog
+      }
+    };
+  
+    // Add an event listener to the form submission
+    const form = document.getElementById("my-form");
+    form.addEventListener("submit", handleSubmit);
+  </script>
+  </body>
+  </html>
+</body>
+</html>
