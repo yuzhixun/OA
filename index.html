@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @font-face {
+                font-family: 'Sellena Brush';
+                src: url('fonts/SellenaBrush-x3JyK.ttf');
+            }
+        @font-face {
+            font-family: '造字工房瑜悦体（非商用）';
+            src: url('fonts/MFYuYue_Noncommercial-Regular.otf');
+        }
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .container{
+            width: 100%;
+            height: 900px;
+            background: url('https://cdn.jsdelivr.net/gh/yuzhixun/picture/nature2.jpg');
+            background-size: cover;
+        }
+        .box1{
+            width: 100%;
+            height: 200px;
+        }
+        .logout{
+            position: relative;
+            top: -70px;
+            float: right;
+         .a{
+            color: red;
+         }
+
+        }
+        .logo{
+            position: relative;
+            top: 50px;
+            width: 150px;
+            height: 120px;
+            line-height: 120px;
+            margin: auto auto;
+            background: url(./image/Snipaste_2023-07-13_18-10-22\(1\)\(1\).png);
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        .word{
+            position: relative;
+            top: 50px;
+            text-align: center;
+            color: black;
+            font-size: 60px;
+            font-weight: 600;
+            font-style: italic;
+            font-family: 'Sellena Brush',sans-serif;
+        }
+        .words{
+            font-family: 'Ma Shan Zheng', cursive;
+            text-align: center;
+            color: black;
+            font-size: 80px;
+            font-weight: 800;
+            position: relative;
+            top: 50px;
+        }
+        .picture{
+            height: 250px;
+            position: relative;
+            top: 50px;
+        }
+        .picture .box2{
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            top: 50px;
+            left: 23%;
+        }
+        .picture .link1{
+            font-family: '造字工房瑜悦体（非商用）',sans-serif;
+            font-size: 20px;
+        
+        }
+        .picture .link2{
+            font-family: '造字工房瑜悦体（非商用）',sans-serif;
+            font-size: 20px;
+        
+        }
+        .box2 .title1{
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            font-style: oblique;
+        }
+        .box3 .title2{
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            font-style: oblique;
+        }
+        .picture .box3{
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            top: 50px;
+            left: 68%;
+        }
+        
+        .p1:hover img{
+            transform: scale(1.2);
+        }
+        .box2 .p2{
+            position: relative;
+            display: inline-block;
+        }
+         .box2 .p2 img{
+            transition: transform 0.3s ease;
+        }
+        .p2:hover img{
+            transform: scale(1.2);
+        }
+        .box3 .p3{
+            position: relative;
+            display: inline-block;
+        }
+         .box3 .p3 img{
+            transition: transform 0.3s ease;
+        }
+        .p3:hover img{
+            transform: scale(1.2);
+        }
+        .backpicture{
+            position: relative;
+            top: 90px;
+            left: 12%;
+        }
+        .last{
+            position: relative;
+            top: 100px;
+            text-align: center;
+            font-style: italic;
+            font-size: 60px;
+            color: brown;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+       <div class="box1">
+        <div class="logo"></div>
+        <div class = "logout">
+            <a class = "a" href = {{url_for("logout")}}>退出登录</a>
+        </div>
+       </div>
+        <div class="word">DONG GUAN DING NUO</div>
+        <div class="words">致力于五金精密制造事业</div>
+        <div class="picture">
+          <div class="box2">
+            <div class="p2"><a href="#"><img src="https://cdn.jsdelivr.net/gh/yuzhixun/picture/yellow.gif" alt=""></a></div>
+            <div class="title1"><a href= {{url_for("finanManager")}} class="link1">财务管理</a></div>
+          </div>
+          <div class="box3">
+            <div class="p3"><a href="#"><img src="https://cdn.jsdelivr.net/gh/yuzhixun/picture/green.gif" alt=""></a></div>
+            <div class="title2"><a href= {{url_for("fileManager")}} class="link2">文件管理</a></div>
+          </div>
+        </div>
+        <div class="backpicture"><img src=“https://github.com/yuzhixun/OA/blob/main/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20230715182928.png?raw=true” alt=""></div>
+        <div class="last">诚信立足，创新致远！</div>
+    </div>
+</body>
+</html>
