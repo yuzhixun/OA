@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Excel-like Form</title>
+    <style>
+        /* 表单样式 */
+        #excelForm {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        /* 表格样式 */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #fff;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f9f9f9;
+        }
+
+        /* 输入框样式 */
+        input[type="text"], button[type="button"], input[type="submit"] {
+            padding: 8px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            width: 100%;
+            font-size: 14px;
+        }
+
+        /* 按钮样式 */
+        button[type="button"], input[type="submit"] {
+            background-color: #4CAF50;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button[type="button"]:hover, input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        /* 新增行样式 */
+        .row {
+            background-color: #f9fafb;
+        }
+    </style>
+</head>
+<body>
+    <h1>{{ mes }}</h1>
+    <form id="excelForm" method="post" action="/finan">
+        {{ form.csrf_token }}
+        <table>
+            <thead>
+                <tr>
+                    <th>{{ form.clientName.label }}</th>
+                    <th>{{form.productName.label}}</th>
+                    <th>{{form.price.label}}</th>
+                    <th>{{ form.timeStart.label }}</th>
+                    <th>{{ form.timeEnd.label }}</th>
+                    <th>{{ form.time.label }}</th>
+                    <th>{{form.status.label}}</th>
+                    <th>{{ form.note.label }}</th>
+                </tr>
+            </thead>
+            <tbody id="rows">
+                <tr class="row">
+                    <td>{{ form.clientName }}</td>
+                    <td>{{form.productName}}</td>
+                    <td>{{form.price}}</td>
+                    <td>{{ form.timeStart }}</td>
+                    <td>{{ form.timeEnd}}</td>
+                    <td>{{ form.time}}</td>
+                    <td>{{form.status}}</td>
+                    <td>{{ form.note}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <button type="button" onclick="addRow()">Add Row</button>
+        <input type="submit" value="Submit">
+    </form>
+
+   <script>
+    function addRow() {
+        var rowsTable = document.getElementById("rows");
+        var newRow = document.createElement("tr");
+        newRow.className = "row";
+        newRow.innerHTML = `
+            <td><input type="text" name="clientName"></td>
+            <td><input type="text" name="productName"></td>
+            <td><input type="text" name="price"></td>
+            <td><input type="text" name="timeStart"></td>
+            <td><input type="text" name="timeEnd"></td>
+            <td><input type="text" name="time"></td>
+            <td><input type="text" name="status"></td>
+            <td><input type="text" name="note"></td>
+        `;
+        rowsTable.appendChild(newRow);
+    }
+</script>
+</body>
+</html>
