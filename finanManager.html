@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 初始化 */
+        @font-face {
+            font-family: '造字工房瑜悦体（非商用）';
+            src: url('fonts/MFYuYue_Noncommercial-Regular.otf');
+        }
+        *{
+            margin: 0;
+            padding: 0;
+            /* box-sizing: border-box; */
+        }
+        /* 底色 */
+        body{
+            height: 100vh;
+            background: linear-gradient(to top,#70b9f1,#1e3c55);
+            overflow: hidden;
+        }
+        /* 弹性布局 水平+垂直居中 */
+        .container{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        /* 钢铁侠 */
+        .iron-man{
+            position: relative;
+            animation: flight 0.5s linear infinite;
+        }
+        .iron-man img{
+            width: 250px;
+            position: relative;
+            z-index: 1;
+        }
+        /* 脚下喷射线 */
+        .iron-man span{
+            width: 30px;
+            height: 1px;
+            background-color: #dcbe7f;
+            position: absolute;
+            top: 12px;
+            z-index: 0;
+            animation: spray 0.3s linear infinite;
+        }
+        /* 为每条喷射线设置top、动画延迟时间 */
+        .iron-man span:nth-child(2){
+            top: 13px;
+            animation-delay: -1s;
+        }
+        .iron-man span:nth-child(3){
+            top: 14px;
+            animation-delay: -2s;
+        }
+        .iron-man span:nth-child(4){
+            top: 15px;
+            animation-delay: -1.5s;
+        }
+        /* 背景线 */
+        .lines span{
+            position: absolute;
+            width: 20%;
+            height: 2px;
+            background-color: #fff;
+            /* 执行线移动的动画 */
+            animation: linemove linear infinite;
+        }
+        /* 为每条线设置top、动画时长、动画延迟时间 */
+        .lines span:nth-child(1){
+            top: 20%;
+            animation-duration: 0.6s;
+            animation-delay: -5s;
+        }
+        .lines span:nth-child(2){
+            top: 40%;
+            animation-duration: 0.8s;
+            animation-delay: -1s;
+        }
+        .lines span:nth-child(3){
+            top: 60%;
+            animation-duration: 0.6s;
+            animation-delay: 0s;
+        }
+        .lines span:nth-child(4){
+            top: 80%;
+            animation-duration: 0.5s;
+            animation-delay: -3s;
+        }
+        .loading-text{
+            /* 绝对定位 水平居中 垂直偏下 */
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 65%;
+            color: #fff;
+            font-size: 14px;
+            letter-spacing: 3px;
+            white-space: nowrap;
+            width: 250px;
+            /* 执行文字移动的动画：动画名 时长 贝塞尔曲线 无限次播放 */
+            animation: textmove 3s cubic-bezier(0.075, 0.82, 0.165, 1) infinite;
+            font-family: '造字工房瑜悦体（非商用）';
+            font-size: larger;
+        }
+        .loading-text::after{
+            content: "";
+            animation: ellipsismove 3s cubic-bezier(0.075, 0.82, 0.165, 1) infinite;
+        }
+        /* 飞行动画（抖动） */
+        @keyframes flight {
+            0%{
+                transform: translate(2px,1px) rotate(0deg);
+            }
+            10%{
+                transform: translate(-1px,-3px) rotate(-1deg);
+            }
+            20%{
+                transform: translate(1px,-2px) rotate(0deg);
+            }
+            30%{
+                transform: translate(2px,1px) rotate(-1deg);
+            }
+            40%{
+                transform: translate(-1px,-3px) rotate(-1deg);
+            }
+            50%{
+                transform: translate(1px,-2px) rotate(0deg);
+            }
+            60%{
+                transform: translate(2px,1px) rotate(-1deg);
+            }
+            70%{
+                transform: translate(-1px,-3px) rotate(-1deg);
+            }
+            80%{
+                transform: translate(1px,-2px) rotate(0deg);
+            }
+            90%{
+                transform: translate(2px,-3px) rotate(-1deg);
+            }
+            100%{
+                transform: translate(1px,-2px) rotate(-1deg);
+            }
+             /* 定义链接的样式 */
+        }
+        a {
+            width: 100px;
+            display: block;
+            color: #000; /* 设置链接文本的颜色 */
+            text-decoration: none; /* 去除链接的下划线 */
+            padding: 10px; /* 设置链接的内边距 */
+            background-color: #fff;
+            margin-right: 10px; /* 设置链接之间的右侧间距 */
+            border-radius: 5px; /* 设置链接的边框圆角 */
+        }
+        .href1{
+            position: relative;
+            top: 460px;
+            right: -65%;
+        }
+        .href2{
+            position: relative;
+            top: 470px;
+            right: -65%;
+        }
+
+        /* 鼠标移入链接时的样式 */
+        a:hover {
+            background-color: #ccc; /* 设置链接在鼠标悬停时的背景颜色 */
+        }
+    
+    </style>
+</head>
+<body>
+    <div>
+        <a href={{url_for("buy") class="href1">辅料管理</a>
+        <a href={{url_for('pay') class="href2">收支记录</a>
+    </div>
+    <div class="container">
+        <div class="iron-man">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <img src="./image/Fe.png">
+        </div>
+        <div class="lines">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="loading-text">可曾见过鼎诺企业的钢铁侠</div>
+    </div>
+</body>
+</html>
