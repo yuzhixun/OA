@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Excel-like Form</title>
+</head>
+<style>
+/* 表单样式 */
+#excelForm {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f2f2f2;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+/* 表格样式 */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    margin-bottom: 20px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    background-color: #f9f9f9;
+}
+
+/* 输入框样式 */
+input[type="text"], button[type="button"], input[type="submit"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    width: 100%;
+    font-size: 14px;
+}
+
+/* 按钮样式 */
+button[type="button"], input[type="submit"] {
+    background-color: #4CAF50;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button[type="button"]:hover, input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+/* 新增行样式 */
+.row {
+    background-color: #f9fafb;
+}
+</style>
+
+<body>
+    <h1>{{ mes }}</h1>
+    <form id="excelForm" method="post" action="/finan">
+        {{ form.csrf_token }}
+        <table>
+            <thead>
+                <tr>
+                    <th>{{ form.data.label }}</th>
+                    <th>{{ form.item.label }}</th>
+                    <th>{{ form.vendor.label }}</th>
+                    <th>{{ form.specification.label }}</th>
+                    <th>{{ form.unit.label }}</th>
+                    <th>{{ form.amount.label }}</th>
+                    <th>{{ form.unit_price.label }}</th>
+                    <th>{{ form.price.label }}</th>
+                    <th>{{ form.remark.label }}</th>
+                    <th>{{form.category.label}}</th>
+                </tr>
+            </thead>
+            <tbody id="rows">
+                <tr class="row">
+                    <td>{{ form.data }}</td>
+                    <td>{{ form.item }}</td>
+                    <td>{{ form.vendor }}</td>
+                    <td>{{ form.specification }}</td>
+                    <td>{{ form.unit }}</td>
+                    <td>{{ form.amount }}</td>
+                    <td>{{ form.unit_price }}</td>
+                    <td>{{ form.price }}</td>
+                    <td>{{ form.remark }}</td>
+                    <td>{{form.category}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <button type="button" onclick="addRow()">Add Row</button>
+        <input type="submit" value="Submit" onclick="formReset()">
+    </form>
+
+   <script>
+    function addRow() {
+        var rowsTable = document.getElementById("rows");
+        var newRow = document.createElement("tr");
+        newRow.className = "row";
+        newRow.innerHTML = `
+            <td><input type="text" name="data"></td>
+            <td><input type="text" name="item"></td>
+            <td><input type="text" name="vendor"></td>
+            <td><input type="text" name="specification"></td>
+            <td><input type="text" name="unit"></td>
+            <td><input type="text" name="amount"></td>
+            <td><input type="text" name="unit_price"></td>
+            <td><input type="text" name="price"></td>
+            <td><input type="text" name="remark"></td>
+            <td><input type="text" name="category"></td>
+        `;
+        rowsTable.appendChild(newRow);
+    }
+
+    function formReset()
+  {
+  document.getElementById("excelForm").reset()
+  }
+</script>
+</body>
+</html>
