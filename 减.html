@@ -1,0 +1,96 @@
+<body>
+  <h1>{{ mes }}</h1>
+  <form id="excelForm" method="post" >
+      {{ form.csrf_token }}
+      <table>
+          <thead>
+              <tr>
+                  <th>日期</th>
+                  <th>项目</th>
+                  <th>供应商</th>
+                  <th>规格</th>
+                  <th>单位</th>
+                  <th>数量</th>
+                  <th>单价</th>
+                  <th>总价</th>
+                  <th>备注</th>
+                  <th>类别</th>
+              </tr>
+          </thead>
+          <tbody id="rows">
+              <tr class="row">
+                  <td>
+                      <div class="date-select">
+
+                         年 {{ form.year(class="form-control") }}
+                          <!-- 月份选择 -->
+                          月{{ form.month(class="form-control") }}
+                          <!-- 日选择 -->
+                          日{{ form.day(class="form-control") }}
+                      </div>
+                  </td>
+                  <td>{{ form.item(class="form-control") }}</td>
+                  <td>{{ form.vendor(class="form-control") }}</td>
+                  <td>{{ form.specification(class="form-control") }}</td>
+                  <td>{{ form.unit(class="form-control") }}</td>
+                  <td>{{ form.amount(class="form-control") }}</td>
+                  <td>{{ form.unit_price(class="form-control") }}</td>
+                  <td>{{ form.price(class="form-control") }}</td>
+                  <td>{{ form.remark(class="form-control") }}</td>
+                  <td>{{ form.category(class="form-control") }}</td>
+                  <td><button type="button" onclick="deleteRow(this)">删除</button></td>
+              </tr>
+          </tbody>
+      </table>
+      <button type="button" onclick="addRow()">Add Row</button>
+      <input type="submit" value="Submit">
+  </form>
+
+ <script>
+  function addRow() {
+      var rowsTable = document.getElementById("rows");
+      var newRow = document.createElement("tr");
+      newRow.className = "row";
+      newRow.innerHTML = `
+          <td>
+              <div class="date-select">
+                  <label for="year">年:</label>
+                  <label for="year">年份：</label>
+                  <select class="form-control" name="year">
+                      {% for i in range(2022, 2101) %}
+                          <option value="{{ i }}">{{ i }}</option>
+                      {% endfor %}
+                  </select>
+                  <!-- 月份选择 -->
+                  <label for="month">月份：</label>
+                  <select class="form-control" name="month">
+                      {% for i in range(1, 13) %}
+                          <option value="{{ i }}">{{ i }}</option>
+                      {% endfor %}
+                  </select>
+                  <!-- 日选择 -->
+                  <label for="day">日期：</label>
+                  <select class="form-control" name="day">
+                      {% for i in range(1, 32) %}
+                          <option value="{{ i }}">{{ i }}</option>
+                      {% endfor %}
+                  </select>
+              </div>
+          </td>
+          <td><input type="text" name="item" class="form-control"></td>
+          <td><input type="text" name="vendor" class="form-control"></td>
+          <td><input type="text" name="specification" class="form-control"></td>
+          <td><input type="text" name="unit" class="form-control"></td>
+          <td><input type="text" name="amount" class="form-control"></td>
+          <td><input type="text" name="unit_price" class="form-control"></td>
+          <td><input type="text" name="price" class="form-control"></td>
+          <td><input type="text" name="remark" class="form-control"></td>
+          <td><input type="text" name="category" class="form-control"></td>
+          <td><button type="button" onclick="deleteRow(this)">删除</button></td>
+      `;
+      rowsTable.appendChild(newRow);
+  }
+  function deleteRow(button) {
+        var row = button.parentNode.parentNode;
+        row.parentNode.removeChild(row);
+    }
